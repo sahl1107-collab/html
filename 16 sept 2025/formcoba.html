@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulir Kontak — Modern & Responsif</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f1724; /* deep navy */
+        --card: #0b1220;
+        --muted: #94a3b8;
+        --accent1: #6ee7b7; /* soft green */
+        --accent2: #60a5fa; /* soft blue */
+        --radius: 12px;
+        --glass: rgba(255, 255, 255, 0.03);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: radial-gradient(
+            1200px 600px at 10% 10%,
+            rgba(96, 165, 250, 0.06),
+            transparent
+          ),
+          radial-gradient(
+            900px 400px at 90% 90%,
+            rgba(110, 231, 183, 0.04),
+            transparent
+          ),
+          var(--bg);
+        color: #e6eef8;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        width: 100%;
+        max-width: 920px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border-radius: var(--radius);
+        padding: 28px;
+        box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 22px;
+        align-items: start;
+        backdrop-filter: blur(6px);
+      }
+      .panel {
+        padding: 18px;
+        border-radius: 10px;
+        background: var(--card);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 6px 0;
+      }
+      p.lead {
+        margin: 0 0 18px 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+      }
+      .col {
+        flex: 1;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 6px;
+        color: #e6eef8;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0)
+        );
+        color: inherit;
+        font-size: 14px;
+        outline: none;
+        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        box-shadow: 0 6px 18px rgba(96, 165, 250, 0.06);
+        border-color: rgba(96, 165, 250, 0.28);
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .help {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .inline {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .radio-group,
+      .checkbox {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .chip {
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: var(--glass);
+        font-size: 13px;
+      }
+
+      .file-input {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .file-name {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 8px;
+      }
+      .btn {
+        border: 0;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 14px;
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+        color: #062033;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+      }
+
+      /* right preview column */
+      .preview {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .card {
+        padding: 14px;
+        border-radius: 10px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.015),
+          rgba(255, 255, 255, 0.01)
+        );
+      }
+      .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent2), var(--accent1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+      .meta {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .error {
+        color: #ffb4b4;
+        font-size: 13px;
+      }
+      .success {
+        color: #b8f1d8;
+      }
+
+      footer.small {
+        font-size: 12px;
+        color: var(--muted);
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      @media (max-width: 880px) {
+        .container {
+          grid-template-columns: 1fr;
+          padding: 20px;
+        }
+        .panel {
+          padding: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" role="main">
+      <!-- Form column -->
+      <section class="panel" aria-labelledby="form-heading">
+        <h1 id="form-heading">Form Kontak</h1>
+        <p class="lead">
+          Form responsif ini sudah memiliki validasi dasar dan aksesibilitas.
+          Isi data dengan lengkap.
+        </p>
+
+        <form id="contactForm" novalidate>
+          <div class="row">
+            <div class="col">
+              <label for="fullName">Nama Lengkap</label>
+              <input
+                id="fullName"
+                name="fullName"
+                type="text"
+                placeholder="Contoh: Rina Salsabila"
+                required
+                aria-required="true"
+                minlength="2"
+              />
+              <div class="help">Nama seperti pada kartu identitas.</div>
+            </div>
+            <div class="col">
+              <label for="dob">Tanggal Lahir</label>
+              <input id="dob" name="dob" type="date" max="2025-09-16" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="nama@domain.com"
+                required
+              />
+              <div class="help">
+                Kami akan menghubungi via email jika diperlukan.
+              </div>
+            </div>
+            <div class="col">
+              <label for="phone">Nomor Telepon</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                placeholder="0812xxxx"
+                pattern="^08[0-9]{6,12}$"
+              />
+              <div class="help">
+                Format: dimulai dengan 08 (6–12 digit setelah 08).
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label>Jenis Kelamin</label>
+            <div
+              class="radio-group"
+              role="radiogroup"
+              aria-labelledby="gender-label"
+            >
+              <label class="inline"
+                ><input type="radio" name="gender" value="female" />
+                Perempuan</label
+              >
+              <label class="inline"
+                ><input type="radio" name="gender" value="male" />
+                Laki-laki</label
+              >
+              <label class="inline"
+                ><input type="radio" name="gender" value="other" />
+                Lainnya</label
+              >
+            </div>
+          </div>
+
+          <div>
+            <label for="role">Pilih Kategori</label>
+            <select id="role" name="role" aria-label="Kategori" required>
+              <option value="">— Pilih salah satu —</option>
+              <option>Pelajar / Mahasiswa</option>
+              <option>Pegawai</option>
+              <option>Pengusaha</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Pesan / Keterangan</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tuliskan pesan singkat..."
+              maxlength="800"
+            ></textarea>
+            <div class="help">Maks 800 karakter.</div>
+          </div>
+
+          <div>
+            <label for="resume">Lampirkan (opsional)</label>
+            <div class="file-input">
+              <input
+                id="resume"
+                name="resume"
+                type="file"
+                accept=".pdf,.doc,.docx,image/*"
+              />
+              <div class="file-name" id="fileName">Tidak ada file terpilih</div>
+            </div>
+            <div class="help">
+              PDF atau gambar — maksimal 5MB (cek ukuran sebelum upload di
+              server).
+            </div>
+          </div>
+
+          <div class="checkbox">
+            <label class="inline"
+              ><input id="agree" name="agree" type="checkbox" required /> Saya
+              setuju menerima komunikasi terkait layanan ini.</label
+            >
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="reset" class="btn btn-ghost">Reset</button>
+            <div id="status" class="small" aria-live="polite"></div>
+          </div>
+        </form>
+
+        <footer class="small">
+          Privasi: data hanya digunakan untuk keperluan kontak.
+        </footer>
+      </section>
+
+      <!-- Preview / info column -->
+      <aside class="panel preview" aria-labelledby="preview-heading">
+        <div class="card">
+          <div style="display: flex; gap: 12px; align-items: center">
+            <div class="avatar">UI</div>
+            <div>
+              <div style="font-weight: 600">Form Kontak — Preview</div>
+              <div class="meta">
+                Tampilan ringkas untuk verifikasi data sebelum kirim.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 12px;
+              align-items: center;
+            "
+          >
+            <div>
+              <div class="small">Nama</div>
+              <div id="pvName" style="font-weight: 600">-</div>
+            </div>
+            <div>
+              <div class="small">Email</div>
+              <div id="pvEmail" style="font-weight: 600">-</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="small">Ringkasan</div>
+          <div id="pvMsg" style="margin-top: 8px">Belum ada pesan</div>
+        </div>
+
+        <div class="card">
+          <div class="small">Tip</div>
+          <ul style="margin: 8px 0 0 18px; color: var(--muted)">
+            <li>Gunakan email aktif agar bisa dihubungi.</li>
+            <li>Periksa kembali sebelum klik Kirim.</li>
+            <li>Gunakan bahasa singkat, jelas, dan sopan.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      // Small client-side enhancement: show filename, live preview, basic validation message
+      const form = document.getElementById("contactForm");
+      const fileInput = document.getElementById("resume");
+      const fileName = document.getElementById("fileName");
+      const status = document.getElementById("status");
+
+      const pvName = document.getElementById("pvName");
+      const pvEmail = document.getElementById("pvEmail");
+      const pvMsg = document.getElementById("pvMsg");
+
+      fileInput.addEventListener("change", () => {
+        const f = fileInput.files[0];
+        if (!f) {
+          fileName.textContent = "Tidak ada file terpilih";
+          return;
+        }
+        let name = f.name;
+        if (name.length > 30) name = name.slice(0, 27) + "...";
+        fileName.textContent = name;
+      });
+
+      // live preview
+      ["fullName", "email", "message"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener("input", () => {
+          pvName.textContent = document.getElementById("fullName").value || "-";
+          pvEmail.textContent = document.getElementById("email").value || "-";
+          pvMsg.textContent =
+            document.getElementById("message").value || "Belum ada pesan";
+        });
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        status.textContent = "";
+        // built-in validity
+        if (!form.checkValidity()) {
+          const invalid = form.querySelector(":invalid");
+          invalid.focus();
+          status.textContent =
+            "Periksa kembali kolom yang berwarna atau kosong.";
+          status.className = "error";
+          return;
+        }
+
+        // example: show success message (here you would send data to server via fetch/ajax)
+        status.textContent = "Terima kasih! Form berhasil dikirim (demo).";
+        status.className = "success";
+
+        // reset preview after a short moment (simulate send)
+        setTimeout(() => {
+          form.reset();
+          fileName.textContent = "Tidak ada file terpilih";
+          pvName.textContent = "-";
+          pvEmail.textContent = "-";
+          pvMsg.textContent = "Belum ada pesan";
+        }, 800);
+      });
+    </script>
+  </body>
+</html>

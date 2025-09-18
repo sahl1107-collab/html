@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Data Pribadi</title>
+  </head>
+  <body>
+    <fieldset>
+      <!-- INPUT DIMULAI -->
+      <form action="#" method="post">
+        <h1>FORM DATA PRIBADI</h1>
+        <!-- INPUT NAMA -->
+        <div>
+          <label for="nama">Nama:</label>
+          <input type="text" id="nama" name="nama" />
+        </div>
+        <!-- INPUT ALAMAT -->
+        <div>
+          <label for="alamat">Alamat:</label>
+          <textarea id="alamat" name="alamat"></textarea>
+        </div>
+        <!-- JENIS KELAMIN-->
+        <div>
+          <label for="jk"></label>
+          <label> LAKI LAKI <input type="radio" name="jenis_kelamin" /></label>
+          <label for="jk"></label>
+          <label> PEREMPUAN <input type="radio" name="jenis_kelamin" /></label>
+        </div>
+        <!-- HOBI -->
+        <div>
+          <label>Hobi:</label><br />
+          <input type="checkbox" id="memasak" name="hobi" value="Memasak" />
+          <label for="memasak">Memasak</label>
+          <input type="checkbox" id="bersepeda" name="hobi" value="Bersepeda" />
+          <label for="bersepeda">Bersepeda</label>
+          <input type="checkbox" id="lari" name="hobi" value="Lari" />
+          <label for="lari">Lari</label>
+          <input type="checkbox" id="panahan" name="hobi" value="Panahan" />
+          <label for="panahan">Panahan</label>
+          <input type="checkbox" id="renang" name="hobi" value="Renang" />
+          <label for="renang">Renang</label>
+          <input type="submit" value="Kirim" />
+        </div>
+      </form>
+    </fieldset>
+  </body>
+</html>
